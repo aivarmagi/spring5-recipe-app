@@ -16,12 +16,12 @@ public class UnitOfMeasureCommandToUnitOfMeasure implements Converter<UnitOfMeas
     @Nullable
     @Override
     public UnitOfMeasure convert(UnitOfMeasureCommand source) {
-        log.debug("Converting UnitOfMeasureCommand to UnitOfMeasure with id:{}", source.getId());
 
         if (source == null) {
             return null;
         }
 
+        log.debug("Converting UnitOfMeasureCommand to UnitOfMeasure with id:{}", source.getId());
         final UnitOfMeasure unitOfMeasure = new UnitOfMeasure();
 
         unitOfMeasure.setId(source.getId());

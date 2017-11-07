@@ -16,12 +16,12 @@ public class NotesToNotesCommand implements Converter<Notes, NotesCommand> {
     @Nullable
     @Override
     public NotesCommand convert(Notes source) {
-        log.debug("Converting Notes with id:{} to NotesCommand", source.getId());
 
         if (source == null) {
             return null;
         }
 
+        log.debug("Converting Notes with id:{} to NotesCommand", source.getId());
         final NotesCommand notesCommand = new NotesCommand();
 
         notesCommand.setId(source.getId());

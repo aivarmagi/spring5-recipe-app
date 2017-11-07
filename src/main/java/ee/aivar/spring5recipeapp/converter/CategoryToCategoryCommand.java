@@ -16,12 +16,12 @@ public class CategoryToCategoryCommand implements Converter<Category, CategoryCo
     @Nullable
     @Override
     public CategoryCommand convert(Category source) {
-        log.debug("Converting Category with id:{} to CategoryCommand", source.getId());
 
         if (source == null) {
             return null;
         }
 
+        log.debug("Converting Category with id:{} to CategoryCommand", source.getId());
         final CategoryCommand categoryCommand = new CategoryCommand();
 
         categoryCommand.setId(source.getId());

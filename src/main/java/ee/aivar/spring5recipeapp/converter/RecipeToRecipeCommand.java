@@ -26,12 +26,12 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
     @Nullable
     @Override
     public RecipeCommand convert(Recipe source) {
-        log.debug("Converting Recipe with id:{} to RecipeCommand", source.getId());
 
         if (source == null) {
             return null;
         }
 
+        log.debug("Converting Recipe with id:{} to RecipeCommand", source.getId());
         final RecipeCommand recipeCommand = new RecipeCommand();
 
         recipeCommand.setId(source.getId());

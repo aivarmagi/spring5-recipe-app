@@ -22,12 +22,12 @@ public class IngredientCommandToIngredient implements Converter<IngredientComman
     @Nullable
     @Override
     public Ingredient convert(IngredientCommand source) {
-        log.debug("Converting IngredientCommand to Ingredient with id:{}", source.getId());
 
         if (source == null) {
             return null;
         }
 
+        log.debug("Converting IngredientCommand to Ingredient with id:{}", source.getId());
         final Ingredient ingredient = new Ingredient();
 
         ingredient.setId(source.getId());
