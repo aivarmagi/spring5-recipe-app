@@ -3,10 +3,12 @@ package ee.aivar.spring5recipeapp.converter;
 import ee.aivar.spring5recipeapp.command.RecipeCommand;
 import ee.aivar.spring5recipeapp.domain.Recipe;
 import lombok.Synchronized;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
 
@@ -26,6 +28,7 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
     @Nullable
     @Override
     public Recipe convert(RecipeCommand source) {
+        log.debug("Converting RecipeCommand to Recipe with id:{}", source.getId());
 
         if (source == null) {
             return null;

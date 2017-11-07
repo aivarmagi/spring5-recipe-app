@@ -3,10 +3,12 @@ package ee.aivar.spring5recipeapp.converter;
 import ee.aivar.spring5recipeapp.command.IngredientCommand;
 import ee.aivar.spring5recipeapp.domain.Ingredient;
 import lombok.Synchronized;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 public class IngredientCommandToIngredient implements Converter<IngredientCommand, Ingredient> {
 
@@ -20,6 +22,7 @@ public class IngredientCommandToIngredient implements Converter<IngredientComman
     @Nullable
     @Override
     public Ingredient convert(IngredientCommand source) {
+        log.debug("Converting IngredientCommand to Ingredient with id:{}", source.getId());
 
         if (source == null) {
             return null;

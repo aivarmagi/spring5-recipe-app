@@ -32,7 +32,7 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Set<Recipe> getRecipes() {
-        log.debug("I'm logging getRecipes method");
+        log.debug("Finding all Recipes");
         Set<Recipe> recipeSet = new HashSet<>();
 
         recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
@@ -41,7 +41,7 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Recipe findById(Long id) {
-
+        log.debug("Finding Recipe with id:{}", id);
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);
 
         if (!recipeOptional.isPresent()) {
@@ -58,7 +58,7 @@ public class RecipeServiceImpl implements RecipeService {
         Recipe detachedRecipe = recipeCommandToRecipe.convert(command);
 
         Recipe savedRecipe = recipeRepository.save(detachedRecipe);
-        log.debug("Saved RecipeId:" + savedRecipe.getId());
+        log.debug("Saved Recipe with id:" + savedRecipe.getId());
         return recipeToRecipeCommand.convert(savedRecipe);
     }
 
