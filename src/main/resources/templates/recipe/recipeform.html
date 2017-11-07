@@ -18,6 +18,7 @@
 </head>
 <body>
 <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
+<!--/*@thymesVar id="ingredient" type="guru.springframework.domain.Ingredient"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -102,13 +103,13 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <ul>
+                                    <ul th:if="${not #lists.isEmpty(ingredients)}">
                                         <li th:remove="all">1 Cup of milk</li>
                                         <li th:remove="all">1 Teaspoon of chocolate</li>
-                                        <li th:each="ingredient : ${recipe.ingredients}"
-                                            th:text="${(ingredient.getAmount() +
-                                        ' ' + ingredient.uom.getDescription() +
-                                        ' - ' + ingredient.getDescription())}">1 Teaspoon of Sugar
+                                        <li th:each="ingredient : ${ingredients}"
+                                            th:text="${(ingredient.amount +
+                                        ' ' + ingredient.uom.description +
+                                        ' - ' + ingredient.description)}">1 Teaspoon of Sugar
                                         </li>
                                     </ul>
                                 </div>
