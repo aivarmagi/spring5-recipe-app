@@ -1,7 +1,9 @@
 package ee.aivar.spring5recipeapp.controllers;
 
+import ee.aivar.spring5recipeapp.command.IngredientCommand;
 import ee.aivar.spring5recipeapp.command.RecipeCommand;
 import ee.aivar.spring5recipeapp.domain.Recipe;
+import ee.aivar.spring5recipeapp.service.IngredientService;
 import ee.aivar.spring5recipeapp.service.RecipeService;
 import org.junit.Before;
 import org.junit.Test;
