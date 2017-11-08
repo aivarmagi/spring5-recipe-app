@@ -1,6 +1,8 @@
 package ee.aivar.spring5recipeapp.controllers;
 
 import ee.aivar.spring5recipeapp.command.IngredientCommand;
+import ee.aivar.spring5recipeapp.command.RecipeCommand;
+import ee.aivar.spring5recipeapp.command.UnitOfMeasureCommand;
 import ee.aivar.spring5recipeapp.service.IngredientService;
 import ee.aivar.spring5recipeapp.service.RecipeService;
 import ee.aivar.spring5recipeapp.service.UnitOfMeasureService;
@@ -69,5 +71,22 @@ public class IngredientController {
         log.debug("Saved recipe with id: {}", savedCommand.getRecipeId());
 
         return "redirect:/recipe/" + savedCommand.getRecipeId() + "/ingredient/" + savedCommand.getId() + "/show";
+    }
+
+    @GetMapping("recipe/{recipeId}/ingredient/new")
+    public String newRecipe(@PathVariable String recipeId, Model model) {
+
+        RecipeCommand recipeCommand = recipeService.findCommandById(Long.valueOf(recipeId));
+        //todo raise exception if null
+
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(Long.valueOf(recipeId));
+        model.addAttribute("ingredient", ingredientCommand);
+
+        ingredientCommand.setUom(new UnitOfMeasureCommand());
+
+        model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
+
+        return "recipe/ingredient/ingredientform";
     }
 }
