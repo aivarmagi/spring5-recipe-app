@@ -1,6 +1,5 @@
 package ee.aivar.spring5recipeapp.domain;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +9,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-//@EqualsAndHashCode(exclude = {"ingredients"})
 @Entity
 public class Recipe {
 
